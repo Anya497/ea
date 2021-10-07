@@ -2,35 +2,16 @@
 #include <math.h>
 #include <string>
 
-int c(int x1, int y1, int x0, int y0)
-{
-	double fi;
-	if (x1 != x0) {
-		fi = atan((y1 - y0) / (x1 - x0));
-	}
-	if (x1 == x0 and y0 <= y1) {
-		fi = atan(1.0) * 2;
-	}
-	if (x1 == x0 and y0 > y1) {
-		fi = -atan(1.0) * 2;
-	}
-	double x_c, y_c;
-	double r = sqrt(pow(x1 - x0, 2) + pow(y1 - y0, 2));
-	if (x1 < x0) {
-		x_c = r * cos(fi - atan(1.0) * 6) + x0, y_c = r * sin(fi - atan(1.0) * 6) + y0;
-	}
-	else {
-		x_c = r * cos(fi - atan(1.0) * 2) + x0, y_c = r * sin(fi - atan(1.0) * 2) + y0;
-	}
-	
+
+void c(int x1, int y1, int x0, int y0) {
+	float x_c, y_c;
+	x_c = (y1 - y0) + x0, y_c = -(x1 - x0) + y0;
 	std::cout << "point c: (";
 	std::cout << x_c;
 	std::cout << " ";
 	std::cout << y_c;
 	std::cout << ")" << std::endl;
-	return 0;
 }
-
 
 int main()
 {
